@@ -12,13 +12,26 @@ const SendMessage = ({ scroll }) => {
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
-    await addDoc(collection(db, "messages"), {
-      text: message,
-      name: displayName,
-      avatar: photoURL,
-      createdAt: serverTimestamp(),
-      uid,
-    });
+
+    const userName = (auth.currentUser.email).split('@')[0];
+    
+    if (auth.currentUser.displayName === null) {
+      await addDoc(collection(db, "messages"), {
+        text: message,
+        name: userName,
+        avatar: photoURL,
+        createdAt: serverTimestamp(),
+        uid,
+      });
+    } else {
+      await addDoc(collection(db, "messages"), {
+        text: message,
+        name: displayName,
+        avatar: photoURL,
+        createdAt: serverTimestamp(),
+        uid,
+      });
+    }
     setMessage("");
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };

@@ -4,6 +4,8 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import ChatBox from "./components/ChatBox";
 import Welcome from "./components/Welcome";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -18,6 +20,7 @@ function App() {
           <ChatBox />
         </>
       )}
+      <ToastContainer />
     </div>
   );
 }
