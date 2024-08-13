@@ -1,17 +1,11 @@
-import React, { useEffect,useState } from "react";
-import GoogleSignin from "../img/btn_google_signin_dark_pressed_web.png";
-import { auth } from "../firebase";
+import React, {useState } from "react";
 import {
-  GoogleAuthProvider,
-  signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
-  SignInMethod,
   getAuth
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Welcome = () => {
   const [email, setEmail] = useState("");
@@ -19,15 +13,7 @@ const Welcome = () => {
   const [activeTab, setActiveTab] = useState("login");
   const auth = getAuth(); // Initialize the Auth instance
 
-  const googleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
-  
+
   const emailLogIn = async (e) => {
     e.preventDefault();
     const signInMethods = await fetchSignInMethodsForEmail(auth, email);
