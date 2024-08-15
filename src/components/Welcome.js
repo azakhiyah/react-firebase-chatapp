@@ -2,7 +2,6 @@ import React, {useState } from "react";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  fetchSignInMethodsForEmail,
   getAuth
 } from "firebase/auth";
 import { toast } from "react-toastify";
@@ -16,9 +15,6 @@ const Welcome = () => {
 
   const emailLogIn = async (e) => {
     e.preventDefault();
-    const signInMethods = await fetchSignInMethodsForEmail(auth, email);
-    
-    console.log(signInMethods);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Logged in successfully");
