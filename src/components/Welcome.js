@@ -47,24 +47,6 @@ const Welcome = () => {
     }
   };
 
-  // const forgotPassword = async () => {
-  //   try {
-  //     console.log("Reset email input:", resetEmail); // Log the email being checked
-  //     const signInMethods = await fetchSignInMethodsForEmail(auth, resetEmail);
-  //     console.log("Sign-in methods fetched:", signInMethods); // Log the fetched sign-in methods
-  
-  //     if (signInMethods.length > 0) {
-  //       await sendPasswordResetEmail(auth, resetEmail);
-  //       toast.success("Password reset email sent!");
-  //     } else {
-  //       toast.error("Email not registered.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error in forgotPassword:", error); // Log any errors
-  //     toast.error(error.message);
-  //   }
-  // };
-
   const forgotPassword = async () => {
     if (!resetEmail) {
       toast.error("Please enter your email address first");
